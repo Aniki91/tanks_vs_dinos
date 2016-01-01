@@ -21,7 +21,7 @@ namespace TanksVsDinos
 
         // Variable used to calculate a time difference between attacks
         // to allow the play to fire again, instead of constantly firing bullets.
-        private static readonly TimeSpan intervalBetweenAttack1 = TimeSpan.FromMilliseconds(250);
+        private static readonly TimeSpan intervalBetweenAttack1 = TimeSpan.FromMilliseconds(625);
         private TimeSpan lastTimeAttack;
 
         public override void Initialize()

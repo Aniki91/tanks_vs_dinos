@@ -94,12 +94,12 @@ namespace TanksVsDinos
                     TD_Game.gameState = GameState.game;
                     TD_Game.Instance.level_No = 1;
                 }
-                else if (Controler.Buttons.A == ButtonState.Pressed)
+                else if (Controler.Buttons.A == ButtonState.Pressed || keyState.IsKeyDown(Keys.D8))
                 {
                     TD_Game.gameState = GameState.game;
                     TD_Game.Instance.level_No = 2;
                 }
-                else if (Controler.Buttons.B == ButtonState.Pressed)
+                else if (Controler.Buttons.B == ButtonState.Pressed || keyState.IsKeyDown(Keys.D9))
                 {
                     TD_Game.gameState = GameState.game;
                     TD_Game.Instance.level_No = 3;
@@ -132,26 +132,201 @@ namespace TanksVsDinos
                 // with the Tank's collision box, then the Health of the player is lowered,
                 // and a delay is made so that the player cannot be hit again for a short
                 // period of time.
-                for (int i = 0; i < TD_Game.Instance.Bad_Guys.Count; i++)
+                for (int i = 0; i < TD_Game.Instance.Bad_Guys1.Count; i++)
                 {
-                    if (this.box.Intersects(TD_Game.Instance.Bad_Guys[i].box)
+                    if (this.box.Intersects(TD_Game.Instance.Bad_Guys1[i].box)
                         && (lastTimeDamaged + intervalBetweenDamage < gameTime.TotalGameTime))
                     {
-                        tank_health -= 10;
+                        tank_health -= 5;
                         lastTimeDamaged = gameTime.TotalGameTime;
                     }
                 }
+                #region Dino Damage Code.
 
-                foreach (TD_Fire Bad_G_Bullet in TD_Game.Instance.BGBullets)
+                if (TD_Game.Instance.level_No == 2)
                 {
-                    if (this.box.Intersects(Bad_G_Bullet.box) && (lastTimeDamaged + intervalBetweenDamage < gameTime.TotalGameTime))
-                    {
-                        tank_health -= 10;
-                        lastTimeDamaged = gameTime.TotalGameTime;
-                        Bad_G_Bullet.isAlive = false;
 
+                    for (int i = 0; i < TD_Game.Instance.Bad_Guys2.Count; i++)
+                    {
+                        if (TD_Game.Instance.tempDino2.Bullets.Count > 0 && i < TD_Game.Instance.tempDino2.Bullets.Count)
+                        {
+
+                            if ((this.box.Intersects(TD_Game.Instance.tempDino2.Bullets[i].box)
+                                && (lastTimeDamaged + intervalBetweenDamage < gameTime.TotalGameTime)))
+                            {
+                                tank_health -= 10;
+                                lastTimeDamaged = gameTime.TotalGameTime;
+                                TD_Game.Instance.tempDino2.Bullets[i].isAlive = false;
+
+                            }
+                        }
+                    }
+
+                    for (int i = 0; i < TD_Game.Instance.Bad_Guys2.Count; i++)
+                    {
+                        if (TD_Game.Instance.tempDino3.Bullets.Count > 0 && i < TD_Game.Instance.tempDino3.Bullets.Count)
+                        {
+
+                            if ((this.box.Intersects(TD_Game.Instance.tempDino3.Bullets[i].box)
+                                && (lastTimeDamaged + intervalBetweenDamage < gameTime.TotalGameTime)))
+                            {
+                                tank_health -= 10;
+                                lastTimeDamaged = gameTime.TotalGameTime;
+                                TD_Game.Instance.tempDino3.Bullets[i].isAlive = false;
+
+                            }
+                        }
+                    }
+
+                    for (int i = 0; i < TD_Game.Instance.Bad_Guys2.Count; i++)
+                    {
+                        if (TD_Game.Instance.tempDino3.Bullets.Count > 0 && i < TD_Game.Instance.tempDino3.Bullets.Count)
+                        {
+
+                            if ((this.box.Intersects(TD_Game.Instance.tempDino3.Bullets[i].box)
+                                && (lastTimeDamaged + intervalBetweenDamage < gameTime.TotalGameTime)))
+                            {
+                                tank_health -= 10;
+                                lastTimeDamaged = gameTime.TotalGameTime;
+                                TD_Game.Instance.tempDino3.Bullets[i].isAlive = false;
+
+                            }
+                        }
+                    }
+
+                    for (int i = 0; i < TD_Game.Instance.Bad_Guys2.Count; i++)
+                    {
+                        if (TD_Game.Instance.tempDino4.Bullets.Count > 0 && i < TD_Game.Instance.tempDino4.Bullets.Count)
+                        {
+
+                            if ((this.box.Intersects(TD_Game.Instance.tempDino4.Bullets[i].box)
+                                && (lastTimeDamaged + intervalBetweenDamage < gameTime.TotalGameTime)))
+                            {
+                                tank_health -= 10;
+                                lastTimeDamaged = gameTime.TotalGameTime;
+                                TD_Game.Instance.tempDino4.Bullets[i].isAlive = false;
+
+                            }
+                        }
+                    }
+
+                    for (int i = 0; i < TD_Game.Instance.Bad_Guys2.Count; i++)
+                    {
+                        if (TD_Game.Instance.tempDino5.Bullets.Count > 0 && i < TD_Game.Instance.tempDino5.Bullets.Count)
+                        {
+
+                            if ((this.box.Intersects(TD_Game.Instance.tempDino5.Bullets[i].box)
+                                && (lastTimeDamaged + intervalBetweenDamage < gameTime.TotalGameTime)))
+                            {
+                                tank_health -= 10;
+                                lastTimeDamaged = gameTime.TotalGameTime;
+                                TD_Game.Instance.tempDino5.Bullets[i].isAlive = false;
+
+                            }
+                        }
+                    }
+
+                    for (int i = 0; i < TD_Game.Instance.Bad_Guys2.Count; i++)
+                    {
+                        if (TD_Game.Instance.tempDino6.Bullets.Count > 0 && i < TD_Game.Instance.tempDino6.Bullets.Count)
+                        {
+
+                            if ((this.box.Intersects(TD_Game.Instance.tempDino6.Bullets[i].box)
+                                && (lastTimeDamaged + intervalBetweenDamage < gameTime.TotalGameTime)))
+                            {
+                                tank_health -= 10;
+                                lastTimeDamaged = gameTime.TotalGameTime;
+                                TD_Game.Instance.tempDino6.Bullets[i].isAlive = false;
+
+                            }
+                        }
+                    }
+
+                    for (int i = 0; i < TD_Game.Instance.Bad_Guys2.Count; i++)
+                    {
+                        if (TD_Game.Instance.tempDino7.Bullets.Count > 0 && i < TD_Game.Instance.tempDino7.Bullets.Count)
+                        {
+
+                            if ((this.box.Intersects(TD_Game.Instance.tempDino7.Bullets[i].box)
+                                && (lastTimeDamaged + intervalBetweenDamage < gameTime.TotalGameTime)))
+                            {
+                                tank_health -= 10;
+                                lastTimeDamaged = gameTime.TotalGameTime;
+                                TD_Game.Instance.tempDino7.Bullets[i].isAlive = false;
+
+                            }
+                        }
+                    }
+
+                    for (int i = 0; i < TD_Game.Instance.Bad_Guys2.Count; i++)
+                    {
+                        if (TD_Game.Instance.tempDino8.Bullets.Count > 0 && i < TD_Game.Instance.tempDino8.Bullets.Count)
+                        {
+
+                            if ((this.box.Intersects(TD_Game.Instance.tempDino8.Bullets[i].box)
+                                && (lastTimeDamaged + intervalBetweenDamage < gameTime.TotalGameTime)))
+                            {
+                                tank_health -= 10;
+                                lastTimeDamaged = gameTime.TotalGameTime;
+                                TD_Game.Instance.tempDino8.Bullets[i].isAlive = false;
+
+                            }
+                        }
+                    }
+
+                    for (int i = 0; i < TD_Game.Instance.Bad_Guys2.Count; i++)
+                    {
+                        if (TD_Game.Instance.tempDino9.Bullets.Count > 0 && i < TD_Game.Instance.tempDino9.Bullets.Count)
+                        {
+
+                            if ((this.box.Intersects(TD_Game.Instance.tempDino9.Bullets[i].box)
+                                && (lastTimeDamaged + intervalBetweenDamage < gameTime.TotalGameTime)))
+                            {
+                                tank_health -= 10;
+                                lastTimeDamaged = gameTime.TotalGameTime;
+                                TD_Game.Instance.tempDino9.Bullets[i].isAlive = false;
+
+                            }
+                        }
+                    }
+
+                    for (int i = 0; i < TD_Game.Instance.Bad_Guys2.Count; i++)
+                    {
+                        if (TD_Game.Instance.tempDino10.Bullets.Count > 0 && i < TD_Game.Instance.tempDino10.Bullets.Count)
+                        {
+
+                            if ((this.box.Intersects(TD_Game.Instance.tempDino10.Bullets[i].box)
+                                && (lastTimeDamaged + intervalBetweenDamage < gameTime.TotalGameTime)))
+                            {
+                                tank_health -= 10;
+                                lastTimeDamaged = gameTime.TotalGameTime;
+                                TD_Game.Instance.tempDino10.Bullets[i].isAlive = false;
+
+                            }
+                        }
+                    }
+
+                    for (int i = 0; i < TD_Game.Instance.Bad_Guys2.Count; i++)
+                    {
+                        if (TD_Game.Instance.tempDino11.Bullets.Count > 0 && i < TD_Game.Instance.tempDino11.Bullets.Count)
+                        {
+
+                            if ((this.box.Intersects(TD_Game.Instance.tempDino11.Bullets[i].box)
+                                && (lastTimeDamaged + intervalBetweenDamage < gameTime.TotalGameTime)))
+                            {
+                                tank_health -= 10;
+                                lastTimeDamaged = gameTime.TotalGameTime;
+                                TD_Game.Instance.tempDino11.Bullets[i].isAlive = false;
+
+                            }
+                        }
                     }
                 }
+                #endregion
+
+
+
+
 
                 // If the Tank's health is empty or the Tank goes outside
                 // the bounds of the bottom of the screen, then he dies.
@@ -162,7 +337,7 @@ namespace TanksVsDinos
 
                 // If the player is moving left or right, and no collision is being made
                 // then they can continue to go in that direction.
-                if ((keyState.IsKeyDown(Keys.D) || Controler.DPad.Right == ButtonState.Pressed) && isRightCol == false)
+                if ((keyState.IsKeyDown(Keys.D) || Controler.DPad.Right == ButtonState.Pressed || Controler.ThumbSticks.Left.X > 0.5f) && isRightCol == false)
                 {
                     if (TD_Level_2.isOnIce == true)
                     {
@@ -173,7 +348,7 @@ namespace TanksVsDinos
                         velocity.X = 4f;
                     }
                 }
-                else if ((keyState.IsKeyDown(Keys.A) || Controler.DPad.Left == ButtonState.Pressed) && isLeftCol == false)
+                else if ((keyState.IsKeyDown(Keys.A) || Controler.DPad.Left == ButtonState.Pressed || Controler.ThumbSticks.Left.X < -0.5f) && isLeftCol == false)
                 {
                     if (TD_Level_2.isOnIce == true)
                     {
@@ -184,7 +359,7 @@ namespace TanksVsDinos
                         velocity.X = -4f;
                     }
                 }
-                else
+                else 
                 {
                     velocity.X = 0f;
                 }
@@ -217,12 +392,6 @@ namespace TanksVsDinos
                 {
                     power_up += 1;
                 }
-            }
-
-
-
-            if (Controler.Buttons.Back == ButtonState.Pressed)
-            {
             }
         }
 

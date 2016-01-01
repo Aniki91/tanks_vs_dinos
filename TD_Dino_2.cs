@@ -72,12 +72,20 @@ namespace TanksVsDinos
 
 
 
-            if (look.Length() > 400.0f)
+            if (look.Length() > 450.0f)
             {
-                // if(look.Length() > 20.0f)
-                // {
-                //      **Stop dino code**
-                // }
+                //code to detect if dino is hit
+
+                for (int i = 0; i < TD_Game.Instance.Bullets.Count; i++)
+                {
+                    if (this.box.Intersects(TD_Game.Instance.Bullets[i].box))
+                    {
+                        this.isAlive = false;
+                        TD_Game.Instance.Bullets[i].isAlive = false;
+                        TD_Game.Instance.turret.score += 125;
+                    }
+                }
+
             }
             else
             {

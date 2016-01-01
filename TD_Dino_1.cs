@@ -75,7 +75,7 @@ namespace TanksVsDinos
                     {
                         this.isAlive = false;
                         bullet.isAlive = false;
-                        TD_Game.Instance.turret.score += 200;
+                        TD_Game.Instance.turret.score += 50;
                     }
                 }  
                 

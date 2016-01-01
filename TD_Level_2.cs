@@ -15,6 +15,10 @@ namespace TanksVsDinos
 {
     class TD_Level_2 : TD_GameActor
     {
+        //level positions
+        //level 1
+        //texture level 1
+        //rectangle level 1
 
         //bool for tank being on the ice
         public static bool isOnIce;
@@ -117,17 +121,17 @@ namespace TanksVsDinos
         public Rectangle ft5_floorCol_2;
         public Rectangle ft5_floorCol_3;
         public Texture2D floorTile_6;
-        
-
-        // End Game
-        public Texture2D endGame;
-        public Rectangle endGame_rect;
 
         //health pick up stuff
         public Texture2D health_img_1;
         public Rectangle health_col_1;
         public bool isPickedUp;
         public Vector2 healthPick_pos;
+        
+
+        // End Game
+        public Texture2D endGame;
+        public Rectangle endGame_rect;
 
         public List<TD_GameActor> temp_Actor_List = new List<TD_GameActor>();
 
@@ -250,9 +254,9 @@ namespace TanksVsDinos
                 endGame_rect = new Rectangle(3904, 256, 64, 320);
 
                 //health pick up
-                health_img_1 = TD_Game.Instance.Content.Load<Texture2D>("healthPickup_Level2");
-                health_col_1 = new Rectangle(2560, 320, health_img_1.Width, health_img_1.Height);
-                healthPick_pos = new Vector2(2560, 320);
+                health_img_1 = TD_Game.Instance.Content.Load<Texture2D>("healthPickup");
+                health_col_1 = new Rectangle(2452, 192, health_img_1.Width, health_img_1.Height);
+                healthPick_pos = new Vector2(2452, 192);
             }
 
 
@@ -297,6 +301,8 @@ namespace TanksVsDinos
                     backPos_5_4.X -= 3f;
                     backPos_6_4.X -= 3f;
 
+                    healthPick_pos.X -= 4f;
+
                     TD_Game.Instance.Actor_List[0].pos.X -= 4f;
 
                     this.Level_Scroll_R = true;
@@ -334,6 +340,8 @@ namespace TanksVsDinos
                     backPos_4_4.X += 3f;
                     backPos_5_4.X += 3f;
                     backPos_6_4.X += 3f;
+
+                    healthPick_pos.X += 4f;
 
                     TD_Game.Instance.Actor_List[0].pos.X += 4f;
 
@@ -383,7 +391,6 @@ namespace TanksVsDinos
                     TD_Game.Instance.playerTank.bFinish = true;
                 }
 
-                //right side collision
                 if (TD_PlayerTank.collision.isToRightOf(ft1_floorCol_1) ||
                    (TD_PlayerTank.collision.isToRightOf(ft1_floorCol_2)) ||
                    (TD_PlayerTank.collision.isToRightOf(ft3_floorCol_1)) ||
@@ -397,7 +404,6 @@ namespace TanksVsDinos
                     TD_PlayerTank.isLeftCol = false;
                 }
 
-                //left side collision
                 if (TD_PlayerTank.collision.isToLeftOf(ft2_floorCol_2) ||
                    (TD_PlayerTank.collision.isToLeftOf(ft3_floorCol_3)) ||
                    (TD_PlayerTank.collision.isToLeftOf(ft3_floorCol_3)) ||
@@ -438,7 +444,6 @@ namespace TanksVsDinos
             }
 
 
-
         }
 
         public override void Draw(GameTime gameTime)
@@ -456,12 +461,12 @@ namespace TanksVsDinos
                 TD_Game.Instance.spriteBatch.Draw(floorTile_4, levelPos_4, Color.White);
                 TD_Game.Instance.spriteBatch.Draw(floorTile_5, levelPos_5, Color.White);
                 TD_Game.Instance.spriteBatch.Draw(floorTile_6, levelPos_6, Color.White);
-            }
 
-            // Flag to make the health invisible if it's picked up.
-            if (isPickedUp == false)
-            {
-                TD_Game.Instance.spriteBatch.Draw(health_img_1, healthPick_pos, Color.White);
+                // Flag to make the health invisible if it's picked up.
+                if (isPickedUp == false)
+                {
+                    TD_Game.Instance.spriteBatch.Draw(health_img_1, healthPick_pos, Color.White);
+                }
             }
         }
     }
